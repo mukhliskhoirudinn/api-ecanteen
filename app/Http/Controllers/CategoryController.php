@@ -57,7 +57,7 @@ class CategoryController extends Controller
             $categories = Categories::create($data);
 
             $categoriesResponse = [
-                'id' => $categories->id,
+                'uuid' => $categories->uuid,
                 'name' => $categories->name,
                 'slug' => $categories->slug,
             ];
@@ -192,7 +192,7 @@ class CategoryController extends Controller
 
             return new ResponseResource(
                 true,
-                'Category Updated',
+                'Category Deleted',
                 null,
                 ['code' => 200],
                 200
