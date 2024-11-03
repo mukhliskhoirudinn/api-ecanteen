@@ -24,10 +24,10 @@ class CategoryController extends Controller
         if ($categories->isEmpty()) {
             return new ResponseResource(
                 true,
-                'Categories not found',
+                'Categories not available',
                 null,
-                ['code' => 404],
-                404
+                ['code' => 200],
+                200
             );
         }
 
