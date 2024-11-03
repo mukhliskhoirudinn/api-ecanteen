@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SupplierController;
 
@@ -19,6 +20,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::get('user-list', [UserController::class, 'index']);
+
+Route::apiResource('products', ProductController::class);
 
 Route::post('registration', [AuthController::class, 'registration']);
 Route::post('login', [AuthController::class, 'login']);
