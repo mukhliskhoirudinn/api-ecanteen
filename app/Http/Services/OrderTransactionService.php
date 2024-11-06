@@ -43,6 +43,11 @@ class OrderTransactionService
         return OrderTransaction::where($column, $value)->first();
     }
 
+    public function getByStudent(string $id)
+    {
+        return OrderTransaction::where('student_id', $id)->with('student:id,name', 'product:id,name')->latest()->get();
+    }
+
     public function create(array $data, int $product_id)
     {
         //get product

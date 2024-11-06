@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\OwnerMiddleware;
 use App\Models\Categories;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Resources\ResponseResource;
 use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class CategoryController extends Controller
+class CategoryController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('owner', except: ['index']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
